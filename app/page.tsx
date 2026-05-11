@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ContactForm } from "@/components/contact-form";
 import { SiteChrome } from "@/components/site-chrome";
 import { CounterStats } from "@/components/counter-stats";
@@ -177,9 +178,11 @@ export default function Home() {
             <article className="property-card">
               <div className="property-card__badge">Cash Flow + Redevelopment</div>
               <div className="property-card__image">
-                <img
-                  src="https://source.unsplash.com/1200x900/?commercial,retail,plaza"
+                <Image
+                  src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=84"
                   alt="Commercial retail plaza"
+                  fill
+                  sizes="(max-width: 980px) 100vw, 48vw"
                 />
                 <span>Kennedy & Denison Plaza, Markham</span>
               </div>
