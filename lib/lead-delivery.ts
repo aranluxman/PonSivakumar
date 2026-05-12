@@ -5,6 +5,7 @@ export type LeadPayload = {
   phone?: string;
   interest?: string;
   message?: string;
+  details?: Record<string, string | string[]>;
   source: string;
   submittedAt: string;
   userAgent?: string | null;
@@ -12,14 +13,19 @@ export type LeadPayload = {
 };
 
 export async function deliverLead(payload: LeadPayload) {
-  const deliveries = await Promise.allSettled([
-    postWebhook(payload),
-    sendEmail(payload)
-  ]);
+  const tasks: Array<Promise<void>> = [];
+  if (process.env.LEAD_WEBHOOK_URL) tasks.push(postWebhook(payload));
+  if (process.env.RESEND_API_KEY) tasks.push(sendEmail(payload));
 
+  if (!tasks.length) {
+    console.info("Lead captured without external delivery integration", payload);
+    return;
+  }
+
+  const deliveries = await Promise.allSettled(tasks);
   const failures = deliveries.filter((result) => result.status === "rejected");
   if (failures.length === deliveries.length) {
-    console.info("Lead captured without external delivery integration", payload);
+    throw new Error("Lead delivery failed.");
   }
 }
 
@@ -71,6 +77,13 @@ async function sendEmail(payload: LeadPayload) {
 }
 
 function formatLead(payload: LeadPayload) {
+  const details = payload.details
+    ? Object.entries(payload.details).map(([key, value]) => {
+        const formatted = Array.isArray(value) ? value.join(", ") : value;
+        return `${labelize(key)}: ${formatted}`;
+      })
+    : [];
+
   return [
     `Lead Type: ${payload.type}`,
     `Name: ${payload.fullName}`,
@@ -78,9 +91,14 @@ function formatLead(payload: LeadPayload) {
     `Phone: ${payload.phone || "Not provided"}`,
     `I am a: ${payload.interest || "Not provided"}`,
     `Message: ${payload.message || "Not provided"}`,
+    ...details,
     `Source: ${payload.source}`,
     `Submitted: ${payload.submittedAt}`,
     `IP: ${payload.ip || "Unknown"}`,
     `User Agent: ${payload.userAgent || "Unknown"}`
   ].join("\n");
+}
+
+function labelize(value: string) {
+  return value.replace(/([A-Z])/g, " $1").replace(/^./, (char) => char.toUpperCase());
 }

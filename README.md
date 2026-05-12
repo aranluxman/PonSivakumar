@@ -13,8 +13,7 @@ Premium Ontario commercial real estate investment and brokerage website built as
 
 - `POST /api/contact` validates and captures contact form submissions.
 - `POST /api/investor-package` validates investor package requests.
-- `GET /api/investor-package` generates a downloadable investor package HTML document.
-- `POST /api/chat` runs the on-site investment assistant through the OpenAI Responses API.
+- `GET /api/investor-package` redirects to the print-ready investor package HTML document.
 - `GET /api/health` returns deployment health metadata.
 
 ## Optional Production Integrations
@@ -25,8 +24,6 @@ The backend works without secrets, but these environment variables enable produc
 - `RESEND_API_KEY`: enables email delivery through Resend.
 - `LEAD_TO_EMAIL`: recipient for lead notifications. Defaults to `pon@ponhome.com`.
 - `LEAD_FROM_EMAIL`: verified sender address for Resend. Defaults to `Pon Sivakumar <onboarding@resend.dev>`.
-- `OPENAI_API_KEY`: server-only OpenAI API key for the website chatbot.
-- `OPENAI_MODEL`: optional model override for the chatbot. Defaults to `gpt-5.2`.
 
 ## Local Development
 

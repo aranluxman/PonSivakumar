@@ -4,12 +4,12 @@ import { useEffect, useRef, useState } from "react";
 
 const stats = [
   { value: 15, suffix: "+", label: "Years Experience" },
-  { value: 10, suffix: "+", label: "Residential Properties Managed" },
-  { value: 1.077, prefix: "$", suffix: "M", label: "NOI (Featured Asset)", decimals: 3 },
-  { value: 1, display: "GTA North", label: "Focus" }
+  { value: 1.077, prefix: "$", suffix: "M", label: "NOI Featured Asset", decimals: 3 },
+  { value: 100, suffix: "%", label: "Occupancy" },
+  { value: 4, suffix: "+", label: "Active Markets" }
 ];
 
-export function CounterStats() {
+export function CounterStats({ variant = "hero" }: { variant?: "hero" | "strip" }) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [progress, setProgress] = useState(0);
 
@@ -24,11 +24,9 @@ export function CounterStats() {
         const start = performance.now();
         const animate = (time: number) => {
           const elapsed = time - start;
-          const eased = Math.min(1, elapsed / 1250);
+          const eased = Math.min(1, elapsed / 1200);
           setProgress(1 - Math.pow(1 - eased, 3));
-          if (eased < 1) {
-            frame = requestAnimationFrame(animate);
-          }
+          if (eased < 1) frame = requestAnimationFrame(animate);
         };
         frame = requestAnimationFrame(animate);
         observer.disconnect();
@@ -44,14 +42,15 @@ export function CounterStats() {
   }, []);
 
   return (
-    <div className="stats" ref={ref}>
+    <div className={`stats stats--${variant}`} ref={ref}>
       {stats.map((stat) => {
-        const current = stat.display
-          ? stat.display
-          : `${stat.prefix ?? ""}${(stat.value * progress).toFixed(stat.decimals ?? 0)}${stat.suffix ?? ""}`;
+        const amount = stat.decimals
+          ? (stat.value * progress).toFixed(stat.decimals)
+          : Math.round(stat.value * progress);
+        const current = `${stat.prefix ?? ""}${amount}${stat.suffix ?? ""}`;
         return (
           <div className="stat" key={stat.label}>
-            <strong>{stat.display && progress < 1 ? "GTA" : current}</strong>
+            <strong>{current}</strong>
             <span>{stat.label}</span>
           </div>
         );
