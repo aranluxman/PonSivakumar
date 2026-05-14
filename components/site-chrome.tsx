@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 
@@ -61,8 +62,14 @@ export function SiteChrome({ children }: { children: ReactNode }) {
       <header className={`site-header ${scrolled ? "is-scrolled" : ""} ${open ? "is-open" : ""}`}>
         <div className="site-header__inner">
           <a className="brand" href="#top" onClick={closeMenu} aria-label="Pon Sivakumar home">
-            <span className="brand__name">PON SIVAKUMAR</span>
-            <span className="brand__descriptor">COMMERCIAL REAL ESTATE</span>
+            <Image
+              src="/images/logo.svg"
+              alt="Pon Sivakumar Commercial Real Estate"
+              width={220}
+              height={56}
+              className="brand__logo"
+              priority
+            />
           </a>
           <nav className={`site-nav ${open ? "is-open" : ""}`} aria-label="Primary navigation">
             {navItems.map((item) => (
@@ -103,7 +110,15 @@ export function SiteChrome({ children }: { children: ReactNode }) {
       {children}
       <footer className="site-footer">
         <div className="site-footer__top">
-          <div className="footer-brand">Pon Sivakumar Commercial Real Estate</div>
+          <div className="footer-brand">
+            <Image
+              src="/images/logo.svg"
+              alt="Pon Sivakumar Commercial Real Estate"
+              width={180}
+              height={46}
+              className="footer-brand__logo"
+            />
+          </div>
           <nav className="footer-links" aria-label="Footer navigation">
             <a href="#about">About</a>
             <a href="#strategy">Strategy</a>

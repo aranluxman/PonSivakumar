@@ -1,18 +1,23 @@
 :root {
   --navy: #0d1b2a;
-  --navy-soft: #0f2030;
+  --navy-soft: #0f2236;
+  --navy-mid: #0f2744;
   --navy-deep: #08121e;
   --gold: #c9a84c;
   --gold-light: #e8c96a;
+  --gold-dim: rgba(201, 168, 76, 0.15);
   --white: #ffffff;
   --cream: #f8f7f4;
-  --grey: #f5f5f5;
+  --cream-warm: #f4f0e8;
+  --grey: #f2f2f0;
   --muted: #66727f;
   --ink: #172331;
   --shadow: 0 4px 40px rgba(0, 0, 0, 0.08);
-  --shadow-hover: 0 12px 60px rgba(0, 0, 0, 0.15);
-  --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-card: 0 2px 20px rgba(0, 0, 0, 0.07), 0 8px 40px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 12px 60px rgba(0, 0, 0, 0.16);
+  --transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
   --max: 1180px;
+  --radius: 20px;
 }
 
 * {
@@ -127,23 +132,33 @@ h2 {
 
 .brand {
   display: inline-flex;
-  flex-direction: column;
+  align-items: center;
   line-height: 1;
-  min-width: 210px;
+  min-width: 0;
 }
 
-.brand__name {
+.brand__logo {
+  height: 44px;
+  width: auto;
+  display: block;
+  /* Keep the gold text readable on white bg when scrolled */
+  transition: filter 0.3s ease;
+}
+
+/* When header is scrolled the SVG currentColor text should be navy */
+.site-header.is-scrolled .brand__logo,
+.site-header.is-open .brand__logo {
+  filter: none;
+}
+
+/* SVG uses currentColor for the text — so we drive it via color */
+.brand {
   color: var(--white);
-  font-family: var(--font-playfair), Georgia, serif;
-  font-size: 1.28rem;
 }
 
-.brand__descriptor {
-  color: var(--gold);
-  font-size: 0.64rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  margin-top: 8px;
+.site-header.is-scrolled .brand,
+.site-header.is-open .brand {
+  color: var(--navy);
 }
 
 .site-nav {
@@ -498,12 +513,29 @@ h2 {
 }
 
 .section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   color: var(--gold);
-  font-size: 0.76rem;
+  font-size: 0.72rem;
   font-weight: 900;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   margin: 0 0 14px;
   text-transform: uppercase;
+}
+
+.section-label::before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 99px;
+  flex-shrink: 0;
+}
+
+.section-heading--center .section-label {
+  justify-content: center;
 }
 
 .about__grid {
@@ -552,9 +584,13 @@ h2 {
 }
 
 .solutions,
-.portfolio,
 .testimonials {
   background: var(--grey);
+}
+
+.portfolio {
+  background: var(--navy);
+  color: var(--white);
 }
 
 .approach-flow,
@@ -641,12 +677,17 @@ h2 {
 
 .approach-step {
   position: relative;
-  min-height: 310px;
+  min-height: 300px;
   padding: 36px 28px;
-  border-radius: 24px;
+  border-radius: var(--radius);
   background: var(--white);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-card);
+  border-top: 3px solid transparent;
   transition: var(--transition);
+}
+
+.approach-step:hover {
+  border-top-color: var(--gold);
 }
 
 .approach-step:not(:last-child)::after {
@@ -702,13 +743,18 @@ h2 {
 
 .solution-card {
   display: flex;
-  min-height: 475px;
+  min-height: 460px;
   flex-direction: column;
   padding: 40px;
-  border-radius: 24px;
+  border-radius: var(--radius);
   background: var(--white);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-card);
+  border-bottom: 3px solid transparent;
   transition: var(--transition);
+}
+
+.solution-card:hover {
+  border-bottom-color: var(--gold);
 }
 
 .solution-card__returns {
@@ -754,11 +800,15 @@ h2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.portfolio .section-heading h2 {
+  color: var(--white);
+}
+
 .portfolio-card {
   overflow: hidden;
-  border-radius: 24px;
+  border-radius: var(--radius);
   background: var(--white);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-card);
   transition: var(--transition);
 }
 
@@ -811,11 +861,12 @@ h2 {
 .portfolio-card__stats {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  margin: 22px 0;
+  gap: 10px;
+  margin: 20px 0;
   padding: 16px;
   border-radius: 12px;
-  background: var(--cream);
+  background: var(--cream-warm);
+  border: 1px solid rgba(201, 168, 76, 0.15);
 }
 
 .portfolio-card__stats span {
@@ -842,10 +893,10 @@ h2 {
 }
 
 .map-embed {
-  height: 1240px;
+  height: 860px;
   overflow: hidden;
-  border-radius: 24px;
-  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  box-shadow: 0 0 0 1px rgba(201, 168, 76, 0.2), 0 24px 80px rgba(0, 0, 0, 0.3);
 }
 
 .map-embed--portfolio {
@@ -1178,13 +1229,19 @@ textarea:focus {
 .contact-card {
   display: grid;
   place-items: center;
-  min-height: 230px;
+  min-height: 220px;
   padding: 40px;
-  border-radius: 20px;
-  background: var(--white);
-  color: var(--navy);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--white);
   text-align: center;
-  box-shadow: var(--shadow);
+  box-shadow: 0 0 0 1px rgba(201, 168, 76, 0.2);
+  transition: var(--transition);
+}
+
+.contact-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 1px rgba(201, 168, 76, 0.5);
 }
 
 .contact-card svg {
@@ -1198,16 +1255,17 @@ textarea:focus {
 
 .contact-card span {
   color: var(--gold);
-  font-size: 0.76rem;
+  font-size: 0.72rem;
   font-weight: 900;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 .contact-card strong {
   margin-top: 10px;
+  color: var(--white);
   font-family: var(--font-playfair), Georgia, serif;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 }
 
 .site-footer {
@@ -1237,8 +1295,17 @@ textarea:focus {
 }
 
 .footer-brand {
-  font-family: var(--font-playfair), Georgia, serif;
-  font-size: 1.32rem;
+  display: flex;
+  align-items: center;
+}
+
+.footer-brand__logo {
+  height: 40px;
+  width: auto;
+  display: block;
+  /* Force the logo white-on-dark in footer */
+  filter: brightness(0) invert(1);
+  opacity: 0.88;
 }
 
 .footer-links {
@@ -1442,7 +1509,7 @@ textarea:focus {
   }
 
   .map-embed {
-    height: 1040px;
+    height: 680px;
   }
 
   .site-footer__top {
