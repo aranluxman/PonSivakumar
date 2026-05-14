@@ -65,7 +65,7 @@ export function SiteChrome({ children }: { children: ReactNode }) {
             <Image
               src="/images/logo.svg"
               alt="Pon Sivakumar Commercial Real Estate"
-              width={220}
+              width={290}
               height={56}
               className="brand__logo"
               priority

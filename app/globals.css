@@ -589,8 +589,12 @@ h2 {
 }
 
 .portfolio {
-  background: var(--navy);
+  background:
+    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(201, 168, 76, 0.06) 0%, transparent 55%),
+    linear-gradient(180deg, #0d1b2a 0%, #091520 100%);
   color: var(--white);
+  border-top: 1px solid rgba(201, 168, 76, 0.2);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.2);
 }
 
 .approach-flow,
@@ -798,6 +802,7 @@ h2 {
 
 .portfolio-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
 }
 
 .portfolio .section-heading h2 {
@@ -808,27 +813,38 @@ h2 {
   overflow: hidden;
   border-radius: var(--radius);
   background: var(--white);
-  box-shadow: var(--shadow-card);
+  box-shadow: 0 0 0 1px rgba(201, 168, 76, 0.1), 0 8px 40px rgba(0, 0, 0, 0.28);
   transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-card:hover {
+  box-shadow: 0 0 0 1px rgba(201, 168, 76, 0.4), 0 20px 60px rgba(0, 0, 0, 0.4);
+  transform: translateY(-6px);
 }
 
 .portfolio-card__image {
   position: relative;
-  min-height: 300px;
+  min-height: 260px;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .portfolio-card__image img {
   object-fit: cover;
-  transition: var(--transition);
+  transition: transform 0.5s ease;
 }
 
 .portfolio-card:hover .portfolio-card__image img {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
 .portfolio-card__body {
-  padding: 28px;
+  padding: 24px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .soft-badge {
