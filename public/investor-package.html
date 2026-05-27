@@ -9,14 +9,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --navy: #0D1B2A;
-      --navy-soft: #102235;
-      --gold: #C9A84C;
-      --gold-light: #E8C96A;
+      --navy: #0d1b2e;
+      --navy-soft: #0f2030;
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --gold-dark: #b8962e;
       --white: #FFFFFF;
-      --grey: #F7F6F3;
-      --ink: #2C3E50;
-      --muted: #6F7B86;
+      --grey: #f4f3f0;
+      --cream: #f7f6f4;
+      --ink: #0f1c2e;
+      --muted: #6f7782;
       --shadow: 0 4px 40px rgba(0, 0, 0, 0.08);
     }
 
@@ -71,11 +73,11 @@
       top: 22px;
       right: 22px;
       z-index: 20;
-      border: 1px solid rgba(201, 168, 76, 0.48);
+      border: 0;
       border-radius: 999px;
-      background: rgba(8, 18, 30, 0.86);
-      color: var(--gold-light);
-      box-shadow: var(--shadow);
+      background: var(--gold);
+      color: var(--navy);
+      box-shadow: 0 4px 20px rgba(201, 168, 76, 0.28);
       cursor: pointer;
       font: 800 0.78rem/1 Inter, sans-serif;
       letter-spacing: 0.08em;
@@ -96,7 +98,7 @@
     }
 
     .memo-page--navy {
-      background: radial-gradient(circle at 15% 20%, rgba(201, 168, 76, 0.12), transparent 28%), var(--navy);
+      background: linear-gradient(135deg, rgba(13, 27, 46, 0.98), rgba(13, 27, 46, 0.9)), var(--navy);
       color: var(--white);
     }
 
@@ -353,7 +355,7 @@
     }
 
     .detail-card--light {
-      background: var(--grey);
+      background: var(--cream);
     }
 
     .detail-card--navy {
@@ -422,7 +424,7 @@
     }
 
     .table-row:nth-child(odd):not(.table-head):not(.table-total) {
-      background: var(--grey);
+      background: var(--cream);
     }
 
     .table-head {
@@ -509,7 +511,7 @@
     }
 
     .flow-step:not(:last-child)::after {
-      content: "->";
+      content: "→";
       position: absolute;
       top: 58px;
       right: -18px;
@@ -583,7 +585,7 @@
       display: inline-flex;
       margin-top: 40px;
       border-radius: 999px;
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      background: var(--gold);
       color: var(--navy);
       font-size: 0.82rem;
       font-weight: 900;
@@ -842,7 +844,7 @@
           <article class="contact-card"><div class="icon">✉️</div><strong>Send an Email</strong><p>pon@ponhome.com<br>Response within 24 hours</p></article>
           <article class="contact-card"><div class="icon">🌐</div><strong>Visit Our Website</strong><p>www.ponhome.com<br>View current listings and portfolio</p></article>
         </div>
-        <a class="download-link" href="https://www.ponhome.com/ON/north-richvale/l4c3x5/14837847-MLS-N12940302-na-9747-Bathurst-Street">Download Full Property Package -></a>
+        <a class="download-link" href="https://www.ponhome.com/ON/north-richvale/l4c3x5/14837847-MLS-N12940302-na-9747-Bathurst-Street">Download Full Property Package →</a>
         <p class="legal">This document is for informational purposes only and does not constitute an offering or solicitation. Past performance does not guarantee future results. For accredited investors only.</p>
       </div>
     </div>
