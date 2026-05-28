@@ -50,7 +50,7 @@ async function sendEmail(payload: LeadPayload) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) return;
 
-  const to = process.env.LEAD_TO_EMAIL || "pon@ponhome.com";
+  const to = process.env.LEAD_TO_EMAIL || "aran.luxman@gmail.com";
   const from = process.env.LEAD_FROM_EMAIL || "Pon Sivakumar <onboarding@resend.dev>";
   const subject =
     payload.type === "investor-package"

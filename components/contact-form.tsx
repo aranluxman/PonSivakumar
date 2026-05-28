@@ -214,7 +214,7 @@ export function ContactForm() {
       {submitError ? <p className="submit-error">{submitError}</p> : null}
 
       <button className="button button--gold submit-button" type="submit" disabled={submitting}>
-        {submitting ? "Sending..." : "Send My Inquiry ->"}
+        {submitting ? "Sending..." : "Send My Inquiry →"}
       </button>
       <p className="phone-note">
         Or call directly: <a href="tel:4169195658">(416) 919-5658</a>

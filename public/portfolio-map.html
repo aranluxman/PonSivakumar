@@ -12,9 +12,12 @@
     />
     <style>
       :root {
+claude/improve-website-design-UFcOL
         --navy: #0d1b2a;
         --navy-mid: #0f2236;
         --navy-deep: #091520;
+        --navy: #0d1b2e;
+        main
         --gold: #c9a84c;
         --gold-light: #e8c96a;
         --cream: #f0ede4;
@@ -22,7 +25,7 @@
         --water: #1d3a5f;
         --water-light: #254d7a;
         --white: #ffffff;
-        --ink: #0d1b2a;
+        --ink: #0d1b2e;
       }
 
       * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -39,8 +42,13 @@
         min-height: 100vh;
         padding: clamp(48px, 7vw, 80px) clamp(16px, 4vw, 40px) clamp(36px, 5vw, 60px);
         background:
+ claude/improve-website-design-UFcOL
           radial-gradient(ellipse 70% 40% at 50% 0%, rgba(201,168,76,0.07) 0%, transparent 60%),
           linear-gradient(180deg, #0d1b2a 0%, #091520 100%);
+          radial-gradient(circle at 50% 18%, rgba(201, 168, 76, 0.1), transparent 28%),
+          linear-gradient(180deg, #0d1b2e 0%, #091522 100%);
+        overflow: hidden;
+ main
       }
 
       .map-shell {
@@ -132,8 +140,16 @@
       /* ── Map container ── */
       .map-frame {
         position: relative;
+ claude/improve-website-design-UFcOL
         width: 100%;
         border-radius: 20px;
+
+        width: min(980px, 100%);
+        margin: 0 auto;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.025);
+        box-shadow: 0 4px 40px rgba(0, 0, 0, 0.16);
+ main
         overflow: hidden;
         background: linear-gradient(160deg, #0f2744 0%, #091a2e 100%);
         box-shadow:

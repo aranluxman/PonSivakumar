@@ -25,7 +25,7 @@ const approachSteps = [
 const solutions = [
   {
     title: "Commercial Income Strategy",
-    returns: "8%-12% Annually",
+    returns: "8%–12% Annually",
     points: [
       "Stable cash flow from fully leased retail plazas",
       "Monthly income distributions",
@@ -35,7 +35,7 @@ const solutions = [
   },
   {
     title: "Development Growth Strategy",
-    returns: "12%-18% Annually",
+    returns: "12%–18% Annually",
     points: [
       "Land assembly, rezoning, redevelopment",
       "Long-term equity appreciation",
@@ -267,7 +267,7 @@ export default function Home() {
                     </div>
                     <p>{property.note}</p>
                     <a className="text-link" href={property.href}>
-                      View Details <span>-&gt;</span>
+                      View Details <span>→</span>
                     </a>
                   </div>
                 </article>
@@ -296,7 +296,7 @@ export default function Home() {
                 className="text-link"
                 href="https://www.ponhome.com/ON/north-richvale/l4c3x5/14837847-MLS-N12940302-na-9747-Bathurst-Street"
               >
-                Learn more about investment opportunities <span>-&gt;</span>
+                Learn more about investment opportunities <span>→</span>
               </a>
             </div>
             <div className="portrait">

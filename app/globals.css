@@ -5,6 +5,7 @@
   --navy-deep: #08121e;
   --gold: #c9a84c;
   --gold-light: #e8c96a;
+  --gold-dark: #b8962e;
   --gold-dim: rgba(201, 168, 76, 0.15);
   --white: #ffffff;
   --cream: #f8f7f4;
@@ -32,7 +33,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--white);
+  background: var(--grey);
   color: var(--ink);
   font-family: var(--font-inter), Arial, sans-serif;
   line-height: 1.8;
@@ -95,25 +96,26 @@ h2 {
   position: fixed;
   inset: 0 0 auto;
   z-index: 50;
-  background: transparent;
+  background: var(--white);
   transition: var(--transition);
 }
 
 .site-header.is-scrolled,
 .site-header.is-open {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 1px 40px rgba(0, 0, 0, 0.15);
+  background: var(--white);
+  box-shadow: 0 1px 28px rgba(13, 27, 46, 0.12);
 }
 
+.brand__name,
 .site-header.is-scrolled .brand__name,
 .site-header.is-open .brand__name,
+.site-nav,
 .site-header.is-scrolled .site-nav,
 .site-header.is-open .site-nav {
   color: var(--navy);
 }
 
+.menu-toggle,
 .site-header.is-scrolled .menu-toggle,
 .site-header.is-open .menu-toggle {
   color: var(--navy);
@@ -135,6 +137,7 @@ h2 {
   align-items: center;
   line-height: 1;
   min-width: 0;
+  color: var(--white);
 }
 
 .brand__logo {
@@ -151,21 +154,22 @@ h2 {
   filter: none;
 }
 
-/* SVG uses currentColor for the text — so we drive it via color */
-.brand {
-  color: var(--white);
-}
-
 .site-header.is-scrolled .brand,
 .site-header.is-open .brand {
   color: var(--navy);
+}
+
+.brand__name {
+  color: var(--navy);
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 1.28rem;
 }
 
 .site-nav {
   display: flex;
   align-items: center;
   gap: 34px;
-  color: rgba(255, 255, 255, 0.88);
+  color: var(--navy);
   font-size: 0.82rem;
   font-weight: 600;
 }
@@ -187,9 +191,9 @@ h2 {
   left: 50%;
   width: 238px;
   padding: 14px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: var(--shadow-hover);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: var(--shadow);
   color: var(--navy);
   opacity: 0;
   pointer-events: none;
@@ -218,7 +222,7 @@ h2 {
 
 .site-nav a:hover,
 .site-nav a:focus-visible {
-  color: var(--gold-light);
+  color: var(--gold);
 }
 
 .header-actions {
@@ -233,8 +237,8 @@ h2 {
   height: 46px;
   border: 0;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--white);
+  background: rgba(13, 27, 46, 0.08);
+  color: var(--navy);
   padding: 0;
   cursor: pointer;
 }
@@ -282,19 +286,20 @@ h2 {
 }
 
 .button--gold {
-  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  background: var(--gold);
   color: var(--navy);
   box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
 }
 
 .button--gold:hover,
 .button--gold:focus-visible {
+  background: var(--gold-dark);
   box-shadow: 0 10px 34px rgba(201, 168, 76, 0.38);
 }
 
 .button--outline {
   color: var(--white);
-  border: 1px solid rgba(201, 168, 76, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.76);
   background: rgba(255, 255, 255, 0.04);
 }
 
@@ -311,6 +316,7 @@ h2 {
   display: flex;
   align-items: center;
   background: var(--navy);
+  padding-top: 88px;
 }
 
 .hero__media {
@@ -328,8 +334,8 @@ h2 {
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(13, 27, 42, 0.95) 0%,
-    rgba(13, 27, 42, 0.75) 50%,
+    rgba(13, 27, 46, 0.96) 0%,
+    rgba(13, 27, 46, 0.78) 50%,
     rgba(20, 40, 65, 0.9) 100%
   );
 }
@@ -361,7 +367,7 @@ h2 {
 .hero__content {
   position: relative;
   z-index: 1;
-  padding: 150px 0 86px;
+  padding: 96px 0 86px;
 }
 
 .hero__eyebrow {
@@ -462,6 +468,10 @@ h2 {
   top: 12%;
   bottom: 12%;
   width: 1px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.stats--strip .stat + .stat::before {
   background: rgba(201, 168, 76, 0.72);
 }
 
@@ -548,7 +558,7 @@ h2 {
 .portrait {
   position: relative;
   aspect-ratio: 4 / 5;
-  border-radius: 24px;
+  border-radius: 16px;
   overflow: hidden;
   background: var(--grey);
   box-shadow: var(--shadow);
@@ -617,7 +627,7 @@ h2 {
 .testimonial-card,
 .contact-card,
 .form-card {
-  border-radius: 24px;
+  border-radius: 16px;
   box-shadow: var(--shadow);
   transition: var(--transition);
 }
@@ -798,6 +808,7 @@ h2 {
 
 .solution-card .button {
   margin-top: auto;
+  width: 100%;
 }
 
 .portfolio-grid {
@@ -1006,7 +1017,7 @@ h2 {
   max-width: 980px;
   margin: 0 auto;
   padding: 56px;
-  border-radius: 24px;
+  border-radius: 16px;
   background: var(--white);
 }
 
@@ -1125,7 +1136,7 @@ textarea:focus {
 }
 
 .radio-pill input:checked + span {
-  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  background: var(--gold);
   border-color: transparent;
 }
 
@@ -1355,8 +1366,8 @@ textarea:focus {
 
 .footer-socials a:hover,
 .footer-socials a:focus-visible {
-  background: rgba(201, 168, 76, 0.16);
-  color: var(--gold-light);
+  background: var(--gold);
+  color: var(--navy);
 }
 
 .footer-credentials,
@@ -1402,11 +1413,11 @@ textarea:focus {
     inset: 76px 16px auto;
     display: grid;
     gap: 0;
-    border-radius: 20px;
-    background: rgba(13, 27, 42, 0.94);
-    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    background: var(--white);
     padding: 18px 24px 28px;
-    box-shadow: var(--shadow-hover);
+    box-shadow: var(--shadow);
+    color: var(--navy);
     transform: translateY(-12px);
     opacity: 0;
     pointer-events: none;
@@ -1425,7 +1436,7 @@ textarea:focus {
 
   .site-header.is-scrolled .site-nav,
   .site-header.is-open .site-nav {
-    color: rgba(255, 255, 255, 0.88);
+    color: var(--navy);
   }
 
   .nav-item {
@@ -1438,7 +1449,7 @@ textarea:focus {
     padding: 0 0 4px 16px;
     background: transparent;
     box-shadow: none;
-    color: rgba(255, 255, 255, 0.72);
+    color: var(--muted);
     opacity: 1;
     pointer-events: auto;
     transform: none;
