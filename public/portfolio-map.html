@@ -7,84 +7,103 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
+claude/improve-website-design-UFcOL
+        --navy: #0d1b2a;
+        --navy-mid: #0f2236;
+        --navy-deep: #091520;
         --navy: #0d1b2e;
+        main
         --gold: #c9a84c;
+        --gold-light: #e8c96a;
         --cream: #f0ede4;
-        --water: #2a4a6b;
-        --muted: rgba(255, 255, 255, 0.64);
+        --cream-hover: #fffbf0;
+        --water: #1d3a5f;
+        --water-light: #254d7a;
         --white: #ffffff;
         --ink: #0d1b2e;
       }
 
-      * {
-        box-sizing: border-box;
-      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
 
       body {
-        margin: 0;
         background: var(--navy);
         color: var(--white);
         font-family: "Inter", Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
       }
 
-      .portfolio-map-section {
-        width: 100%;
-        min-height: 600px;
-        padding: clamp(56px, 8vw, 96px) 20px;
+      /* ── Outer wrapper ── */
+      .map-page {
+        min-height: 100vh;
+        padding: clamp(48px, 7vw, 80px) clamp(16px, 4vw, 40px) clamp(36px, 5vw, 60px);
         background:
+ claude/improve-website-design-UFcOL
+          radial-gradient(ellipse 70% 40% at 50% 0%, rgba(201,168,76,0.07) 0%, transparent 60%),
+          linear-gradient(180deg, #0d1b2a 0%, #091520 100%);
           radial-gradient(circle at 50% 18%, rgba(201, 168, 76, 0.1), transparent 28%),
           linear-gradient(180deg, #0d1b2e 0%, #091522 100%);
         overflow: hidden;
+ main
       }
 
       .map-shell {
-        width: min(1120px, 100%);
+        width: min(1100px, 100%);
         margin: 0 auto;
       }
 
-      .section-heading {
+      /* ── Heading ── */
+      .map-heading {
         text-align: center;
-        margin-bottom: 30px;
+        margin-bottom: 32px;
       }
 
-      .section-heading .label {
-        margin: 0 0 10px;
+      .map-heading .label {
+        display: inline-block;
+        margin: 0 0 14px;
         color: var(--gold);
-        font-size: 0.76rem;
+        font-size: 0.7rem;
         font-weight: 900;
-        letter-spacing: 0.22em;
+        letter-spacing: 0.26em;
         text-transform: uppercase;
       }
 
-      .section-heading h2 {
-        margin: 0;
+      .map-heading h2 {
         font-family: "Playfair Display", Georgia, serif;
-        font-size: clamp(2.7rem, 6vw, 5.1rem);
+        font-size: clamp(2.4rem, 5.5vw, 4.6rem);
         font-weight: 700;
-        line-height: 1;
+        line-height: 1.02;
         color: var(--white);
+        letter-spacing: -0.02em;
       }
 
-      .stats-row {
+      .heading-rule {
+        width: 64px;
+        height: 2px;
+        margin: 20px auto 0;
+        background: linear-gradient(90deg, var(--gold), var(--gold-light), transparent);
+        border-radius: 99px;
+      }
+
+      /* ── Stats bar ── */
+      .stats-bar {
         display: flex;
         justify-content: center;
         align-items: stretch;
-        gap: 0;
-        margin: 0 auto 34px;
-        border-top: 1px solid rgba(201, 168, 76, 0.35);
-        border-bottom: 1px solid rgba(201, 168, 76, 0.35);
-        max-width: 960px;
+        border-top: 1px solid rgba(201,168,76,0.3);
+        border-bottom: 1px solid rgba(201,168,76,0.3);
+        margin: 0 auto 36px;
+        max-width: 860px;
       }
 
       .stat-item {
         flex: 1 1 0;
         min-width: 0;
-        padding: 18px 26px;
+        padding: 20px 24px;
         text-align: center;
         position: relative;
       }
@@ -93,215 +112,249 @@
         content: "";
         position: absolute;
         left: 0;
-        top: 22%;
-        bottom: 22%;
+        top: 20%;
+        bottom: 20%;
         width: 1px;
-        background: rgba(201, 168, 76, 0.7);
+        background: rgba(201,168,76,0.55);
       }
 
-      .stat-number {
+      .stat-num {
         display: block;
         color: var(--gold);
         font-family: "Playfair Display", Georgia, serif;
-        font-size: clamp(1.9rem, 4vw, 3.2rem);
+        font-size: clamp(1.8rem, 3.8vw, 3rem);
         font-weight: 700;
         line-height: 1;
       }
 
       .stat-label {
         display: block;
-        margin-top: 8px;
-        color: rgba(255, 255, 255, 0.86);
-        font-size: 0.74rem;
+        margin-top: 7px;
+        color: rgba(255,255,255,0.75);
+        font-size: 0.68rem;
         font-weight: 800;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
       }
 
+      /* ── Map container ── */
       .map-frame {
         position: relative;
+ claude/improve-website-design-UFcOL
+        width: 100%;
+        border-radius: 20px;
+
         width: min(980px, 100%);
         margin: 0 auto;
         border-radius: 16px;
         background: rgba(255, 255, 255, 0.025);
         box-shadow: 0 4px 40px rgba(0, 0, 0, 0.16);
+ main
         overflow: hidden;
+        background: linear-gradient(160deg, #0f2744 0%, #091a2e 100%);
+        box-shadow:
+          0 0 0 1px rgba(201,168,76,0.18),
+          0 24px 80px rgba(0,0,0,0.4);
       }
 
-      svg {
+      .map-frame svg {
         display: block;
         width: 100%;
         height: auto;
       }
 
-      .water {
+      /* Region fills */
+      .water-body {
         fill: var(--water);
-        opacity: 0.95;
+      }
+
+      .water-body-light {
+        fill: var(--water-light);
+        opacity: 0.7;
       }
 
       .region {
         fill: var(--cream);
-        stroke: rgba(255, 255, 255, 0.3);
-        stroke-width: 2;
+        stroke: rgba(15,39,68,0.5);
+        stroke-width: 1.5;
         vector-effect: non-scaling-stroke;
-        transition:
-          fill 0.18s ease,
-          opacity 0.18s ease;
+        transition: fill 0.2s ease;
+        cursor: default;
       }
 
       .region:hover {
-        fill: #fff8e6;
+        fill: var(--cream-hover);
       }
 
-      .shoreline {
-        fill: none;
-        stroke: rgba(255, 255, 255, 0.18);
-        stroke-width: 2;
+      .region--active {
+        fill: #f5f0e0;
       }
 
-      .map-pin {
+      .water-label {
+        fill: rgba(255,255,255,0.28);
+        font-family: "Inter", Arial, sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .region-label {
+        fill: rgba(13,27,42,0.5);
+        font-family: "Inter", Arial, sans-serif;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      /* Pin styles */
+      .pin-group {
         cursor: pointer;
-        transform-box: fill-box;
-        transform-origin: center;
-        transition:
-          transform 0.2s ease,
-          filter 0.2s ease;
+        transition: filter 0.2s ease;
       }
 
-      .map-pin:hover,
-      .map-pin:focus {
-        transform: scale(1.25);
-        filter: drop-shadow(0 0 8px #c9a84c);
+      .pin-group:hover,
+      .pin-group:focus {
+        /* Glow instead of scale — avoids bounds-change that triggers mouseleave glitch */
+        filter: drop-shadow(0 0 6px rgba(201,168,76,0.95)) drop-shadow(0 0 14px rgba(201,168,76,0.5));
         outline: none;
       }
 
-      .pin-shape {
-        fill: var(--gold);
+      .pin-shadow {
+        fill: rgba(0,0,0,0.2);
+        rx: 50%;
       }
 
-      .pin-dot {
-        fill: var(--white);
+      .pin-body {
+        fill: url(#pinGrad);
+        filter: drop-shadow(0 3px 8px rgba(201,168,76,0.5));
       }
 
-      .pin-hit-area {
-        fill: transparent;
-        pointer-events: all;
+      .pin-hole {
+        fill: rgba(255,255,255,0.9);
       }
 
+      /* Popup */
       .map-popup {
         position: absolute;
-        z-index: 20;
-        width: 240px;
-        padding: 16px;
+        z-index: 30;
+        width: 256px;
         background: var(--white);
-        color: var(--ink);
-        border-left: 4px solid var(--gold);
         border-radius: 16px;
-        box-shadow: 0 12px 60px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 16px 64px rgba(0,0,0,0.22);
+        overflow: hidden;
         opacity: 0;
         visibility: hidden;
-        pointer-events: none;
-        transform: translate(-50%, calc(-100% - 18px));
-        transition:
-          opacity 0.2s ease,
-          transform 0.2s ease,
-          visibility 0.2s ease;
+        /* pointer-events enabled so mouse can drift into the popup without closing it */
+        transform: translate(-50%, calc(-100% - 20px));
+        transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
       }
 
       .map-popup.is-visible {
         opacity: 1;
         visibility: visible;
-        transform: translate(-50%, calc(-100% - 26px));
+        transform: translate(-50%, calc(-100% - 28px));
       }
 
-      .map-popup::after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        bottom: -9px;
-        width: 0;
-        height: 0;
-        border-left: 9px solid transparent;
-        border-right: 9px solid transparent;
-        border-top: 9px solid var(--gold);
-        transform: translateX(-50%);
+      .popup-header {
+        background: var(--navy);
+        padding: 14px 16px 12px;
+        border-bottom: 2px solid var(--gold);
       }
 
       .popup-title {
-        margin: 0;
-        color: var(--ink);
+        color: var(--white);
         font-family: "Playfair Display", Georgia, serif;
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 700;
-        line-height: 1.25;
+        line-height: 1.3;
       }
 
       .popup-badge {
         display: inline-block;
-        margin-top: 8px;
+        margin-top: 5px;
         color: var(--gold);
-        font-size: 10px;
+        font-size: 9px;
         font-weight: 900;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
       }
 
-      .popup-divider {
-        height: 1px;
-        margin: 11px 0;
-        background: rgba(13, 27, 42, 0.12);
-      }
-
-      .popup-stats {
+      .popup-body {
+        padding: 12px 16px 14px;
         display: grid;
         gap: 7px;
       }
 
       .popup-stat {
-        display: grid;
-        grid-template-columns: 78px 1fr;
-        gap: 10px;
-        align-items: start;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 8px;
+        border-bottom: 1px solid #f0f0f0;
+        padding-bottom: 6px;
       }
 
-      .popup-stat span:first-child {
-        color: #7c8792;
-        font-size: 11px;
+      .popup-stat:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .popup-stat-label {
+        color: #8a949e;
+        font-size: 10px;
         font-weight: 700;
-        line-height: 1.25;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        flex-shrink: 0;
       }
 
-      .popup-stat span:last-child {
+      .popup-stat-value {
         color: var(--ink);
-        font-size: 12px;
+        font-size: 11px;
         font-weight: 800;
-        line-height: 1.25;
+        text-align: right;
       }
 
-      .map-note {
-        margin: 22px 0 0;
-        color: rgba(255, 255, 255, 0.62);
-        font-size: 0.92rem;
+      /* Caret */
+      .map-popup::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -8px;
+        transform: translateX(-50%);
+        border: 8px solid transparent;
+        border-bottom: none;
+        border-top-color: var(--white);
+      }
+
+      /* Footnote */
+      .map-footnote {
+        margin-top: 20px;
+        color: rgba(255,255,255,0.45);
+        font-size: 0.78rem;
         font-style: italic;
         text-align: center;
+        letter-spacing: 0.01em;
       }
 
-      @media (max-width: 760px) {
-        .portfolio-map-section {
-          padding-inline: 14px;
-        }
-
-        .stats-row {
+      /* ── Responsive ── */
+      @media (max-width: 640px) {
+        .stats-bar {
           display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-template-columns: 1fr 1fr;
         }
 
-        .stat-item:nth-child(3)::before {
-          display: none;
-        }
+        .stat-item:nth-child(odd)::before { display: none; }
 
-        .stat-item:nth-child(n + 3) {
-          border-top: 1px solid rgba(201, 168, 76, 0.35);
+        .stat-item:nth-child(3),
+        .stat-item:nth-child(4) {
+          border-top: 1px solid rgba(201,168,76,0.3);
         }
 
         .map-frame {
@@ -309,334 +362,284 @@
         }
 
         .map-frame svg {
-          min-width: 760px;
-        }
-      }
-
-      @media (max-width: 520px) {
-        .stats-row {
-          grid-template-columns: 1fr;
-        }
-
-        .stat-item + .stat-item::before {
-          display: none;
-        }
-
-        .stat-item:nth-child(n + 2) {
-          border-top: 1px solid rgba(201, 168, 76, 0.35);
+          min-width: 680px;
         }
 
         .map-popup {
-          width: min(240px, calc(100vw - 42px));
+          width: min(256px, calc(100vw - 32px));
+        }
+      }
+
+      @media (max-width: 400px) {
+        .stats-bar {
+          grid-template-columns: 1fr;
+        }
+
+        .stat-item::before { display: none !important; }
+
+        .stat-item + .stat-item {
+          border-top: 1px solid rgba(201,168,76,0.3);
         }
       }
     </style>
   </head>
   <body>
-    <section class="portfolio-map-section" aria-labelledby="portfolio-map-title">
+    <div class="map-page">
       <div class="map-shell">
-        <div class="section-heading">
-          <p class="label">PORTFOLIO</p>
-          <h2 id="portfolio-map-title">Where We Invest</h2>
+
+        <!-- Heading -->
+        <div class="map-heading">
+          <p class="label">Portfolio</p>
+          <h2>Where We Invest</h2>
+          <div class="heading-rule"></div>
         </div>
 
-        <div class="stats-row" aria-label="Portfolio statistics">
+        <!-- Stats -->
+        <div class="stats-bar" aria-label="Portfolio statistics">
           <div class="stat-item">
-            <span class="stat-number">15+</span>
+            <span class="stat-num">15+</span>
             <span class="stat-label">Years Experience</span>
           </div>
           <div class="stat-item">
-            <span class="stat-number">4+</span>
+            <span class="stat-num">4+</span>
             <span class="stat-label">Active Markets</span>
           </div>
           <div class="stat-item">
-            <span class="stat-number">$1M+</span>
+            <span class="stat-num">$1M+</span>
             <span class="stat-label">NOI (Featured Asset)</span>
           </div>
           <div class="stat-item">
-            <span class="stat-number">100%</span>
+            <span class="stat-num">100%</span>
             <span class="stat-label">Occupancy Rate</span>
           </div>
         </div>
 
+        <!-- Map -->
         <div class="map-frame" id="mapFrame">
           <svg
             id="portfolioMap"
-            viewBox="0 0 800 600"
+            viewBox="0 0 900 620"
+            xmlns="http://www.w3.org/2000/svg"
             role="img"
             aria-label="Interactive SVG map of Southern Ontario portfolio markets"
           >
-            <path
-              class="water"
-              d="M0 0H800V112C756 96 722 96 687 116C650 137 612 135 573 112C520 82 465 82 423 121C392 150 362 153 324 135C280 115 236 116 202 141C165 168 124 166 82 143C49 125 20 121 0 126Z"
-            >
-              <title>Lake Huron and Georgian Bay</title>
-            </path>
-            <path
-              class="water"
-              d="M0 493C56 477 114 476 174 497C226 516 279 519 338 504C414 485 478 492 534 526C589 559 668 571 800 547V600H0Z"
-            >
-              <title>Lake Erie</title>
-            </path>
-            <path
-              class="water"
-              d="M278 405C354 392 424 397 492 417C566 438 636 447 709 423C747 411 778 405 800 407V600H356C335 566 301 542 252 526C205 511 167 488 139 455C188 438 235 422 278 405Z"
-            >
-              <title>Lake Ontario</title>
-            </path>
+            <defs>
+              <linearGradient id="pinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#e8c96a"/>
+                <stop offset="100%" stop-color="#b8943a"/>
+              </linearGradient>
+              <linearGradient id="waterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#1d3a5f"/>
+                <stop offset="100%" stop-color="#142d4a"/>
+              </linearGradient>
+              <filter id="mapShadow" x="-10%" y="-10%" width="120%" height="120%">
+                <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.2)"/>
+              </filter>
+            </defs>
 
-            <g id="regions" aria-label="Southern Ontario regions">
-              <path
-                id="simcoe-county"
-                class="region"
-                d="M240 137L325 111L417 135L452 209L420 260L319 259L254 225Z"
-              >
-                <title>Simcoe County</title>
-              </path>
-              <path
-                id="york-region"
-                class="region"
-                d="M318 259L421 260L442 337L397 381L315 360L291 301Z"
-              >
-                <title>York Region</title>
-              </path>
-              <path
-                id="durham-region"
-                class="region"
-                d="M442 269L534 287L570 350L536 401L438 374L397 337L421 260Z"
-              >
-                <title>Durham Region</title>
-              </path>
-              <path
-                id="peel-region"
-                class="region"
-                d="M229 282L291 258L318 360L285 407L223 386L201 329Z"
-              >
-                <title>Peel Region</title>
-              </path>
-              <path
-                id="halton-region"
-                class="region"
-                d="M223 386L285 407L302 454L260 495L200 469L181 419Z"
-              >
-                <title>Halton Region</title>
-              </path>
-              <path
-                id="hamilton"
-                class="region"
-                d="M142 438L200 469L260 495L240 542L166 531L115 490Z"
-              >
-                <title>Hamilton</title>
-              </path>
-              <path
-                id="city-of-toronto"
-                class="region"
-                d="M315 360L397 381L438 374L438 418L361 434L295 414Z"
-              >
-                <title>City of Toronto</title>
-              </path>
-              <path
-                id="northumberland"
-                class="region"
-                d="M536 401L570 350L643 355L675 397L630 438L555 428Z"
-              >
-                <title>Northumberland</title>
-              </path>
-              <path
-                id="hastings-county"
-                class="region"
-                d="M557 186L653 176L685 246L643 355L570 350L534 287Z"
-              >
-                <title>Hastings County</title>
-              </path>
-              <path
-                id="prince-edward-county"
-                class="region"
-                d="M630 438L675 397L724 411L709 459L651 475Z"
-              >
-                <title>Prince Edward County</title>
-              </path>
-              <path
-                id="frontenac-county"
-                class="region"
-                d="M685 246L770 262L800 320V385L724 411L675 397L643 355Z"
-              >
-                <title>Frontenac County</title>
-              </path>
-              <path
-                id="lanark-county"
-                class="region"
-                d="M653 132L742 132L789 187L770 262L685 246L653 176Z"
-              >
-                <title>Lanark County</title>
-              </path>
+            <!-- Background -->
+            <rect width="900" height="620" fill="url(#waterGrad)"/>
+
+            <!-- Lake Huron / Georgian Bay -->
+            <path class="water-body-light" d="M0 0H900V90C860 75 820 72 780 88C740 105 698 104 656 84C604 60 548 58 500 90C466 114 434 118 398 102C352 83 306 84 270 106C230 130 188 128 148 107C110 89 56 82 0 96Z"/>
+
+            <!-- Lake Ontario -->
+            <path class="water-body" d="M310 390C380 376 450 380 520 398C590 418 660 426 735 405C770 395 810 388 845 390L900 395V620H330C308 590 278 565 238 548C192 528 156 508 126 476C178 458 244 436 310 390Z"/>
+
+            <!-- Lake Erie -->
+            <path class="water-body" d="M0 505C52 490 108 488 165 508C214 524 264 527 318 512C390 493 455 500 510 530C564 558 638 570 760 548L900 530V620H0Z"/>
+
+            <!-- Southern Ontario Regions -->
+            <g id="regions" aria-label="Southern Ontario regions" filter="url(#mapShadow)">
+              <!-- Simcoe County -->
+              <path id="simcoe" class="region" d="M256 118L345 94L440 116L476 190L442 244L340 243L272 210Z"/>
+              <!-- York Region (highlighted – active market) -->
+              <path id="york" class="region region--active" d="M340 243L442 244L464 318L418 362L334 342L308 284Z"/>
+              <!-- Durham Region -->
+              <path id="durham" class="region" d="M464 252L554 268L592 330L554 380L456 354L418 318L442 244Z"/>
+              <!-- Peel Region -->
+              <path id="peel" class="region" d="M246 264L308 240L334 342L300 390L236 368L214 312Z"/>
+              <!-- Halton Region -->
+              <path id="halton" class="region" d="M236 368L300 390L316 436L272 474L208 450L190 402Z"/>
+              <!-- Hamilton -->
+              <path id="hamilton" class="region" d="M155 420L208 450L272 474L252 518L178 508L128 468Z"/>
+              <!-- City of Toronto -->
+              <path id="toronto" class="region region--active" d="M334 342L418 362L456 354L456 396L378 414L312 394Z"/>
+              <!-- Northumberland -->
+              <path id="northumberland" class="region" d="M554 380L592 330L664 336L694 376L648 416L572 406Z"/>
+              <!-- Hastings / Lennox (Napanee area) -->
+              <path id="hastings" class="region region--active" d="M576 168L670 158L702 228L664 336L592 330L554 268Z"/>
+              <!-- Prince Edward County -->
+              <path id="pec" class="region" d="M648 416L694 376L740 390L726 436L670 450Z"/>
+              <!-- Frontenac -->
+              <path id="frontenac" class="region region--active" d="M702 228L784 242L820 300L820 370L740 390L694 376L664 336Z"/>
+              <!-- Lanark -->
+              <path id="lanark" class="region" d="M670 120L754 116L800 170L784 242L702 228L670 158Z"/>
+              <!-- Waterloo / Wellington -->
+              <path id="waterloo" class="region" d="M146 264L214 248L246 264L214 312L158 312L132 288Z"/>
+              <!-- Brant / Oxford -->
+              <path id="brant" class="region" d="M158 312L214 312L236 368L190 402L142 386L122 348Z"/>
             </g>
 
-            <path
-              class="shoreline"
-              d="M142 438C205 424 262 407 315 392C383 374 465 384 536 401C589 414 635 429 724 411"
-            />
+            <!-- Water labels -->
+            <text class="water-label" x="88" y="58" text-anchor="middle" transform="rotate(-8, 88, 58)">Lake Huron</text>
+            <text class="water-label" x="580" y="450" text-anchor="middle">Lake Ontario</text>
+            <text class="water-label" x="180" y="565" text-anchor="middle">Lake Erie</text>
 
-            <g id="pins" aria-label="Property locations">
-              <g class="pin-anchor" transform="translate(374 309)">
-                <g
-                  class="map-pin"
-                  data-property="pin1"
-                  tabindex="0"
-                  role="button"
-                  aria-label="Kennedy and Denison Plaza"
-                >
-                  <circle class="pin-hit-area" cx="0" cy="-31" r="30"></circle>
-                  <path
-                    class="pin-shape"
-                    d="M0 0C0 0-20-19-20-35C-20-48-11-58 0-58C11-58 20-48 20-35C20-19 0 0 0 0Z"
-                  ></path>
-                  <circle class="pin-dot" cx="0" cy="-36" r="6"></circle>
-                </g>
-              </g>
-              <g class="pin-anchor" transform="translate(626 346)">
-                <g
-                  class="map-pin"
-                  data-property="pin2"
-                  tabindex="0"
-                  role="button"
-                  aria-label="Napanee Development Site"
-                >
-                  <circle class="pin-hit-area" cx="0" cy="-31" r="30"></circle>
-                  <path
-                    class="pin-shape"
-                    d="M0 0C0 0-20-19-20-35C-20-48-11-58 0-58C11-58 20-48 20-35C20-19 0 0 0 0Z"
-                  ></path>
-                  <circle class="pin-dot" cx="0" cy="-36" r="6"></circle>
-                </g>
-              </g>
-              <g class="pin-anchor" transform="translate(704 319)">
-                <g
-                  class="map-pin"
-                  data-property="pin3"
-                  tabindex="0"
-                  role="button"
-                  aria-label="Selby Independent Living"
-                >
-                  <circle class="pin-hit-area" cx="0" cy="-31" r="30"></circle>
-                  <path
-                    class="pin-shape"
-                    d="M0 0C0 0-20-19-20-35C-20-48-11-58 0-58C11-58 20-48 20-35C20-19 0 0 0 0Z"
-                  ></path>
-                  <circle class="pin-dot" cx="0" cy="-36" r="6"></circle>
-                </g>
-              </g>
-              <g class="pin-anchor" transform="translate(345 293)">
-                <g
-                  class="map-pin"
-                  data-property="pin4"
-                  tabindex="0"
-                  role="button"
-                  aria-label="Richmond Hill Asset"
-                >
-                  <circle class="pin-hit-area" cx="0" cy="-31" r="30"></circle>
-                  <path
-                    class="pin-shape"
-                    d="M0 0C0 0-20-19-20-35C-20-48-11-58 0-58C11-58 20-48 20-35C20-19 0 0 0 0Z"
-                  ></path>
-                  <circle class="pin-dot" cx="0" cy="-36" r="6"></circle>
-                </g>
-              </g>
+            <!-- Region labels -->
+            <text class="region-label" x="356" y="178" text-anchor="middle">Simcoe</text>
+            <text class="region-label" x="384" y="304" text-anchor="middle">York</text>
+            <text class="region-label" x="505" y="318" text-anchor="middle">Durham</text>
+            <text class="region-label" x="270" y="312" text-anchor="middle">Peel</text>
+            <text class="region-label" x="252" y="420" text-anchor="middle">Halton</text>
+            <text class="region-label" x="196" y="472" text-anchor="middle">Hamilton</text>
+            <text class="region-label" x="388" y="376" text-anchor="middle">Toronto</text>
+            <text class="region-label" x="618" y="370" text-anchor="middle">Northumb.</text>
+            <text class="region-label" x="626" y="244" text-anchor="middle">Hastings</text>
+            <text class="region-label" x="756" y="296" text-anchor="middle">Frontenac</text>
+            <text class="region-label" x="722" y="168" text-anchor="middle">Lanark</text>
+
+            <!-- Map Pins -->
+            <!-- Pin 1: Kennedy & Denison Plaza (Markham, York Region) ~(396,318) -->
+            <g class="pin-group" id="pin1" tabindex="0" role="button" aria-label="Kennedy and Denison Plaza, Markham" transform="translate(396,318)">
+              <ellipse cx="0" cy="2" rx="9" ry="4" fill="rgba(0,0,0,0.25)"/>
+              <path class="pin-body" d="M0,0 C0,0 -16,-14 -16,-26 C-16,-36 -9,-44 0,-44 C9,-44 16,-36 16,-26 C16,-14 0,0 0,0 Z"/>
+              <circle class="pin-hole" cx="0" cy="-27" r="5"/>
+            </g>
+
+            <!-- Pin 2: Richmond Hill Asset ~(350,294) -->
+            <g class="pin-group" id="pin4" tabindex="0" role="button" aria-label="Richmond Hill Commercial Asset" transform="translate(350,294)">
+              <ellipse cx="0" cy="2" rx="9" ry="4" fill="rgba(0,0,0,0.25)"/>
+              <path class="pin-body" d="M0,0 C0,0 -16,-14 -16,-26 C-16,-36 -9,-44 0,-44 C9,-44 16,-36 16,-26 C16,-14 0,0 0,0 Z"/>
+              <circle class="pin-hole" cx="0" cy="-27" r="5"/>
+            </g>
+
+            <!-- Pin 3: Napanee Development Site ~(638,292) -->
+            <g class="pin-group" id="pin2" tabindex="0" role="button" aria-label="Napanee Development Site" transform="translate(638,292)">
+              <ellipse cx="0" cy="2" rx="9" ry="4" fill="rgba(0,0,0,0.25)"/>
+              <path class="pin-body" d="M0,0 C0,0 -16,-14 -16,-26 C-16,-36 -9,-44 0,-44 C9,-44 16,-36 16,-26 C16,-14 0,0 0,0 Z"/>
+              <circle class="pin-hole" cx="0" cy="-27" r="5"/>
+            </g>
+
+            <!-- Pin 4: Selby Independent Living ~(710,298) -->
+            <g class="pin-group" id="pin3" tabindex="0" role="button" aria-label="Selby Independent Living" transform="translate(710,298)">
+              <ellipse cx="0" cy="2" rx="9" ry="4" fill="rgba(0,0,0,0.25)"/>
+              <path class="pin-body" d="M0,0 C0,0 -16,-14 -16,-26 C-16,-36 -9,-44 0,-44 C9,-44 16,-36 16,-26 C16,-14 0,0 0,0 Z"/>
+              <circle class="pin-hole" cx="0" cy="-27" r="5"/>
             </g>
           </svg>
 
+          <!-- Popup overlay -->
           <div class="map-popup" id="mapPopup" aria-hidden="true"></div>
         </div>
 
-        <p class="map-note">Portfolio includes current holdings and active pipeline projects.</p>
+        <p class="map-footnote">Portfolio includes current holdings and active pipeline projects.</p>
       </div>
-    </section>
+    </div>
 
     <script>
       const properties = {
         pin1: {
           name: "Kennedy & Denison Plaza",
           badge: "Retail Plaza · Active",
-          stats: {
-            Address: "Kennedy Rd & Cornett Dr",
-            Size: "41,000 SF",
-            Lot: "4.12 Acres",
-            Occupancy: "100% Leased",
-            NOI: "$1.077M",
-            Tenants: "CIBC, UPS Store, +8 more",
-            Upside: "Redevelopment Potential"
-          }
+          stats: [
+            ["Address", "Kennedy Rd & Cornett Dr"],
+            ["GLA", "41,000 SF"],
+            ["Lot", "4.12 Acres"],
+            ["Occupancy", "100% Leased"],
+            ["NOI", "$1.077M"],
+            ["Upside", "Redevelopment Potential"]
+          ]
         },
         pin2: {
           name: "Napanee Development Site",
           badge: "Land Development · Pipeline",
-          stats: {
-            Location: "Napanee, Ontario",
-            Type: "Seniors Housing / Mixed-Use",
-            Status: "Planning Stage",
-            Strategy: "Long-term development"
-          }
+          stats: [
+            ["Location", "Napanee, Ontario"],
+            ["Type", "Mixed-Use / Seniors"],
+            ["Status", "Planning Stage"],
+            ["Strategy", "Long-term Development"]
+          ]
         },
         pin3: {
           name: "Selby Independent Living",
           badge: "Multi-Family · Pipeline",
-          stats: {
-            Location: "Selby, Ontario",
-            Type: "Independent Living Project",
-            Status: "Development Phase",
-            Strategy: "Community housing"
-          }
+          stats: [
+            ["Location", "Selby, Ontario"],
+            ["Type", "Independent Living"],
+            ["Status", "Development Phase"],
+            ["Strategy", "Community Housing"]
+          ]
         },
         pin4: {
-          name: "Richmond Hill Asset",
-          badge: "Industrial · GTA North",
-          stats: {
-            Location: "Richmond Hill, Ontario",
-            Type: "Industrial / Commercial",
-            Status: "Active",
-            Strategy: "Cash flow + appreciation"
-          }
+          name: "Richmond Hill Commercial",
+          badge: "Office · For Sale",
+          stats: [
+            ["MLS", "N12940302"],
+            ["Price", "$2.398M"],
+            ["Type", "Medical / Dental Office"],
+            ["Location", "North Richvale, ON"]
+          ]
         }
       };
 
+      const svg   = document.getElementById("portfolioMap");
       const frame = document.getElementById("mapFrame");
       const popup = document.getElementById("mapPopup");
-      const pins = Array.from(document.querySelectorAll(".map-pin"));
+      const pins  = Array.from(document.querySelectorAll(".pin-group"));
       let activePin = null;
       let hideTimer = null;
 
-      function popupMarkup(property) {
-        const stats = Object.entries(property.stats)
-          .map(
-            ([label, value]) =>
-              `<div class="popup-stat"><span>${label}</span><span>${value}</span></div>`
-          )
-          .join("");
-
+      function buildPopup(prop) {
+        const rows = prop.stats.map(([label, value]) =>
+          `<div class="popup-stat">
+            <span class="popup-stat-label">${label}</span>
+            <span class="popup-stat-value">${value}</span>
+          </div>`
+        ).join("");
         return `
-          <h3 class="popup-title">${property.name}</h3>
-          <span class="popup-badge">${property.badge}</span>
-          <div class="popup-divider"></div>
-          <div class="popup-stats">${stats}</div>
+          <div class="popup-header">
+            <div class="popup-title">${prop.name}</div>
+            <span class="popup-badge">${prop.badge}</span>
+          </div>
+          <div class="popup-body">${rows}</div>
         `;
       }
 
-      function showPopup(pin) {
-        window.clearTimeout(hideTimer);
-        const property = properties[pin.dataset.property];
-        if (!property) return;
+      // Stable positioning: read SVG translate coords, convert via viewBox math.
+      // This is never affected by CSS hover transforms on the pin, eliminating the glitch.
+      function getPinAnchor(pin) {
+        const t  = pin.getAttribute("transform") || "";
+        const m  = t.match(/translate\(\s*([\d.]+)[,\s]+([\d.]+)\s*\)/);
+        if (!m) return null;
 
-        activePin = pin;
-        popup.innerHTML = popupMarkup(property);
+        const svgX = parseFloat(m[1]);
+        const svgY = parseFloat(m[2]);
+
+        const svgRect   = svg.getBoundingClientRect();
+        const frameRect = frame.getBoundingClientRect();
+        const vb        = svg.viewBox.baseVal;
+
+        return {
+          left: svgRect.left - frameRect.left + svgX * (svgRect.width  / vb.width),
+          top:  svgRect.top  - frameRect.top  + svgY * (svgRect.height / vb.height)
+        };
+      }
+
+      function showPopup(pin) {
+        clearTimeout(hideTimer);
+        const prop = properties[pin.id];
+        if (!prop) return;
+
+        activePin       = pin;
+        popup.innerHTML = buildPopup(prop);
         popup.setAttribute("aria-hidden", "false");
 
-        const frameRect = frame.getBoundingClientRect();
-        const pinRect = pin.getBoundingClientRect();
-        const left = pinRect.left + pinRect.width / 2 - frameRect.left;
-        const top = pinRect.top - frameRect.top;
+        const pos = getPinAnchor(pin);
+        if (!pos) return;
 
-        popup.style.left = `${left}px`;
-        popup.style.top = `${top}px`;
+        popup.style.left = `${pos.left}px`;
+        popup.style.top  = `${pos.top}px`;
         popup.classList.add("is-visible");
       }
 
@@ -646,38 +649,30 @@
         popup.setAttribute("aria-hidden", "true");
       }
 
-      pins.forEach((pin) => {
+      pins.forEach(pin => {
         pin.addEventListener("mouseenter", () => showPopup(pin));
-        pin.addEventListener("mouseleave", () => {
-          hideTimer = window.setTimeout(hidePopup, 110);
-        });
-        pin.addEventListener("focus", () => showPopup(pin));
-        pin.addEventListener("blur", hidePopup);
-        pin.addEventListener("touchstart", (event) => {
-          event.preventDefault();
-          event.stopPropagation();
+        pin.addEventListener("mouseleave", () => { hideTimer = setTimeout(hidePopup, 180); });
+        pin.addEventListener("focus",      () => showPopup(pin));
+        pin.addEventListener("blur",       () => { hideTimer = setTimeout(hidePopup, 180); });
+        pin.addEventListener("touchstart", e => {
+          e.preventDefault();
+          e.stopPropagation();
           if (activePin === pin && popup.classList.contains("is-visible")) {
             hidePopup();
           } else {
             showPopup(pin);
           }
-        });
-        pin.addEventListener("click", (event) => {
-          event.stopPropagation();
-        });
+        }, { passive: false });
+        pin.addEventListener("click", e => e.stopPropagation());
       });
 
-      document.addEventListener("touchstart", (event) => {
-        if (!frame.contains(event.target)) hidePopup();
-      });
+      // Keep popup alive when mouse drifts briefly between pin and popup
+      popup.addEventListener("mouseenter", () => clearTimeout(hideTimer));
+      popup.addEventListener("mouseleave", () => { hideTimer = setTimeout(hidePopup, 180); });
 
-      document.addEventListener("click", (event) => {
-        if (!frame.contains(event.target)) hidePopup();
-      });
-
-      window.addEventListener("resize", () => {
-        if (activePin) showPopup(activePin);
-      });
+      document.addEventListener("click",      e => { if (!frame.contains(e.target)) hidePopup(); });
+      document.addEventListener("touchstart", e => { if (!frame.contains(e.target)) hidePopup(); }, { passive: true });
+      window.addEventListener("resize",       () => { if (activePin) showPopup(activePin); });
     </script>
   </body>
 </html>
